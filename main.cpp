@@ -1,14 +1,9 @@
-#include "Player.h"
 #include "iostream"
-#include "Deck.h"
+#include "Game.h"
 using namespace std;
 
 int main(){
-    Deck d;
-    Card c = d.get_card();
-    cout << display_card(c);
-    //Player p1(1);
-    //cout << p1.get_id();
+    Game g;
     return 1;
 }
 
