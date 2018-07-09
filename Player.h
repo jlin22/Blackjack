@@ -8,10 +8,3 @@ private:
     int cards[5];
 };
 
-Player::Player(int id){
-    this->id = id;  
-}
-
-int Player::get_id(){
-    return id;
-}

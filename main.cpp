@@ -1,9 +1,9 @@
 #include "iostream"
-#include "Game.h"
+#include "Game.cpp"
 using namespace std;
 
 int main(){
-    Game g;
-    return 1;
+    Game g();
+     
 }
 
