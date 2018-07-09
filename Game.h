@@ -1,14 +1,15 @@
 #include "Player.cpp"
 #include "Deck.cpp"
+using namespace std;
 class Game{
 public:
     Game();
     int get_turn();
     void next_turn();
+    std::string declare_turn(); 
 private:
-    Player p1 = Player(1);
-    Player p2 = Player(2); 
+    std::vector<Player> players;
     Deck d(); 
-    int turn = 1;
-}; 
+    int turn = 0;
+}1; 
 
