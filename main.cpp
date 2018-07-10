@@ -6,9 +6,9 @@ int main(){
     Game g;
     while(1){
         cout << g.declare_turn();
-        int x;
+        std::string x;
         cin >> x; 
-        g.next_turn();
+        g.parse_command(x);
     }
 }
 

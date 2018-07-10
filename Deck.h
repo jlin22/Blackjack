@@ -1,6 +1,6 @@
 #include <vector>
 #include "iostream" 
-#include "Card.h"
+#include "Card.cpp"
 #include <ctime>
 #include <cstdlib>
 using namespace std;

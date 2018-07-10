@@ -1,10 +1,13 @@
+#include "Deck.cpp"
+using namespace std;
 class Player{
 public:
     Player(int id);
-    int * get_cards();
+    std::vector<Card> get_cards();
     int get_id(); 
+    void add_card(Card c);
 private:
     int id;
-    int cards[5];
+    std::vector<Card> cards;
 };
 
