@@ -6,6 +6,7 @@ public:
     std::string get_cards();
     int get_id(); 
     void add_card(Card c);
+    int value();
 private:
     int id;
     std::vector<Card> cards;

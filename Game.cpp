@@ -64,7 +64,9 @@ std::string Game::ask_command(){
 
 void Game::display_board(){
     std::cout << declare_turn(); 
-    for (int id = 0; id < num_players; id++) 
+    for (int id = 0; id < num_players; id++){
         std::cout << "\t" <<  players[id].get_cards() << endl;
+        std::cout << "\t Value: " << players[id].value() << endl;
+    }
     std::cout << ask_command();
 }

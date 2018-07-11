@@ -20,5 +20,9 @@ std::string Player::get_cards(){
     return d;
 }
 
+int Player::value(){
+    return cards_values(cards); 
+}
+
 
 

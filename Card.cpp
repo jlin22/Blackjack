@@ -82,3 +82,54 @@ std::string display_cards(std::vector<Card> cards){
     }
     return card;
 }
+
+int card_value(const Card& c){
+    switch(c.val){
+    case(VALUE::Ace):
+        return 1;
+        break;
+    case(VALUE::Two):
+        return 2;
+        break;
+    case(VALUE::Three):
+        return 3;
+        break;
+    case(VALUE::Four):
+        return 4;
+        break;
+    case(VALUE::Five):
+        return 5;
+        break;
+    case(VALUE::Six):
+        return 6;
+        break;
+    case(VALUE::Seven):
+        return 7;
+        break;
+    case(VALUE::Eight):
+        return 8;
+        break;
+    case(VALUE::Nine):
+        return 9;
+        break;
+    case(VALUE::Ten):
+        return 10;
+        break;
+    case(VALUE::Jack):
+        return 10;
+        break;
+    case(VALUE::Queen):
+        return 10;
+        break;
+    case(VALUE::King):
+        return 10;
+        break;
+    }
+} 
+
+int cards_values(std::vector<Card> cards){
+    int sum = 0;
+    for (Card& c : cards)
+        sum += card_value(c);
+    return sum;
+}
