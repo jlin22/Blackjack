@@ -15,10 +15,10 @@ std::string& trim(std::string& str, const std::string& chars = "\t\n\v\f\r "){
 }
 
 //Deck already intialized
-Game::Game(){
+Game::Game(const int p){
+    num_players = p;
     d = Deck();
-    int ids[] = {1,2};
-    for (int id : ids){
+    for (int id = 1; id <= num_players; ++id){  
         players.push_back(Player(id));
     }
     for (int i = 0; i <= 1; ++i){
@@ -55,7 +55,16 @@ void Game::parse_command(std::string comm){
     }
 }
 
+std::string Game::ask_command(){
+    std::string c = "What is Player ";
+    c.append(std::to_string(turn + 1));
+    c.append("'s decision? \t");
+    return c; 
+}
+
 void Game::display_board(){
     std::cout << declare_turn(); 
-    std::cout << players[turn].get_cards();
+    for (int id = 0; id < num_players; id++) 
+        std::cout << "\t" <<  players[id].get_cards() << endl;
+    std::cout << ask_command();
 }

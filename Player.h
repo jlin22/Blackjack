@@ -9,5 +9,6 @@ public:
 private:
     int id;
     std::vector<Card> cards;
+    bool stay;
 };
 

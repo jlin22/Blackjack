@@ -7,7 +7,7 @@ struct Card{
     VALUE val;
 };
 
-std::string display_card(Card& c){
+std::string display_card(const Card& c){
     std::string card = "Suit: ";
     //std::string suits[]= {"H", "S", "C", "D"};
     //std::string values[] = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};

@@ -5,7 +5,7 @@ Deck::Deck(){
     const SUIT SUITS[] = {SUIT::Heart, SUIT::Spades, SUIT::Clubs, SUIT::Diamonds};
     for (VALUE v : VALUES){
         for (SUIT s : SUITS){
-            Card c = {s, v};
+            const Card c = {s, v};
             cards.push_back(c);
         }
     }
