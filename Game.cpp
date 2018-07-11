@@ -16,11 +16,15 @@ std::string& trim(std::string& str, const std::string& chars = "\t\n\v\f\r "){
 
 //Deck already intialized
 Game::Game(){
+    d = Deck();
     int ids[] = {1,2};
     for (int id : ids){
         players.push_back(Player(id));
     }
-    d = Deck();
+    for (int i = 0; i <= 1; ++i){
+        for (Player &p : players)
+            p.add_card(d.get_card());         
+    } 
 }
 
 int Game::get_turn(){
@@ -51,5 +55,7 @@ void Game::parse_command(std::string comm){
     }
 }
 
-void display_board(){
+void Game::display_board(){
+    std::cout << declare_turn(); 
+    std::cout << players[turn].get_cards();
 }

@@ -7,7 +7,7 @@ struct Card{
     VALUE val;
 };
 
-std::string display_card(Card c){
+std::string display_card(Card& c){
     std::string card = "Suit: ";
     //std::string suits[]= {"H", "S", "C", "D"};
     //std::string values[] = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
@@ -74,4 +74,11 @@ std::string display_card(Card c){
     return card; 
 } 
 
-
+std::string display_cards(std::vector<Card> cards){
+    std::string card = "";
+    for (Card& c : cards){
+        card.append(display_card(c));
+        card.append("\t");
+    }
+    return card;
+}
