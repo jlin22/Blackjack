@@ -24,5 +24,12 @@ int Player::value(){
     return cards_values(cards); 
 }
 
+void Player::set_stay(){
+    stay = true;
+}
+
+bool Player::get_stay(){
+    return stay;
+}
 
 

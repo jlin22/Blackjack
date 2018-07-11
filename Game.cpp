@@ -47,9 +47,10 @@ void Game::parse_command(std::string comm){
     trim(comm); 
     lower(comm);
     if (comm.compare("stay") == 0){
+        players[turn].set_stay();
         next_turn();
     }
-    if (comm.compare("hit") == 0){
+    else if (comm.compare("hit") == 0){
         players[turn].add_card(d.get_card());
         next_turn();
     }
@@ -62,11 +63,19 @@ std::string Game::ask_command(){
     return c; 
 }
 
+bool Game::game_over(){
+    for (int id = 0; id < num_players; id++){
+        if (players[id].get_stay() == 0)
+            return false;
+    }
+    return true;
+}
 void Game::display_board(){
     std::cout << declare_turn(); 
     for (int id = 0; id < num_players; id++){
         std::cout << "\t" <<  players[id].get_cards() << endl;
         std::cout << "\t Value: " << players[id].value() << endl;
+        std::cout << "\t Stay: " << players[id].get_stay() << endl;
     }
     std::cout << ask_command();
 }

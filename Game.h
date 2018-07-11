@@ -8,6 +8,7 @@ public:
     void parse_command(std::string comm);
     void display_board();
     std::string ask_command();
+    bool game_over();
 private:
     std::vector<Player> players;
     Deck d; 
