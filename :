@@ -42,8 +42,8 @@ std::string Game::declare_turn(){
     return t;
 }
 
-//returns if comm == valid
 bool Game::parse_command(std::string comm){
+    bool valid;
     trim(comm); 
     lower(comm);
     if (comm.compare("stay") == 0){
@@ -69,18 +69,21 @@ void Game::ask_command(){
 
 bool Game::game_over(){
     int bust = 0;
-    int stay;
+    bool stay = false;
     for (int id = 0; id < num_players; id++){
-        if (players[id].get_stay() == true)
-            stay++;
+        if (players[id].get_stay() == false)
+            stay = true;
         if (players[id].get_bust() == true)
             bust++;
     }
-    return (stay == 2 || bust > num_players - 2);
+    if (bust < num_players - 1)
+        return false; 
+    if (stay == true)
+        return false;
+    return true;
 }
 
 void Game::print_winner(){
-    std::cout << "Game Over";
 }
 
 void Game::determine_winner(){
@@ -99,6 +102,7 @@ void Game::display_board(){
 
 void Game::run_game(){
     while(!game_over()){
+        determine_winner();
         display_board();
         std::string x;
         do{
@@ -107,6 +111,5 @@ void Game::run_game(){
         }
         while (!parse_command(x));
     }
-    display_board(); 
     print_winner();    
 }
