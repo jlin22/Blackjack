@@ -43,7 +43,8 @@ std::string Game::declare_turn(){
     return t;
 }
 
-void Game::parse_command(std::string comm){
+bool Game::parse_command(std::string comm){
+    bool valid;
     trim(comm); 
     lower(comm);
     if (comm.compare("stay") == 0){
@@ -52,8 +53,12 @@ void Game::parse_command(std::string comm){
     }
     else if (comm.compare("hit") == 0){
         players[turn].add_card(d.get_card());
+        players[turn].set_bust();
         next_turn();
     }
+    else
+        return false;
+    return true;
 }
 
 std::string Game::ask_command(){
@@ -70,12 +75,30 @@ bool Game::game_over(){
     }
     return true;
 }
+
+void Game::determine_winner(){
+    return;
+}
 void Game::display_board(){
     std::cout << declare_turn(); 
     for (int id = 0; id < num_players; id++){
         std::cout << "\t" <<  players[id].get_cards() << endl;
-        std::cout << "\t Value: " << players[id].value() << endl;
-        std::cout << "\t Stay: " << players[id].get_stay() << endl;
+        std::cout << "\t Value: " << players[id].value();
+        if (players[id].get_bust() == true)
+            std::cout << " (Busted)";
+        std::cout << endl << "\t Stay: " << players[id].get_stay() << endl;
     }
     std::cout << ask_command();
+}
+
+void Game::run_game(){
+    while(1){
+        determine_winner();
+        display_board();
+        std::string x;
+        do{
+            cin >> x;
+        }
+        while (!parse_command(x));
+    }
 }

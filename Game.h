@@ -5,10 +5,12 @@ public:
     int get_turn();
     void next_turn();
     std::string declare_turn(); 
-    void parse_command(std::string comm);
+    bool parse_command(std::string comm);
     void display_board();
     std::string ask_command();
     bool game_over();
+    void run_game();
+    void determine_winner();
 private:
     std::vector<Player> players;
     Deck d; 

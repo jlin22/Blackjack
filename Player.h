@@ -9,9 +9,12 @@ public:
     int value();
     void set_stay();
     bool get_stay();
+    void set_bust();
+    bool get_bust();
 private:
     int id;
     std::vector<Card> cards;
     bool stay;
+    bool bust;
 };
 

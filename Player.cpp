@@ -2,6 +2,7 @@
 Player::Player(const int id){
     this->id = id;  
     this->stay = false;
+    this->bust = false;
 }
 
 int Player::get_id(){
@@ -32,4 +33,11 @@ bool Player::get_stay(){
     return stay;
 }
 
+void Player::set_bust(){
+    if (value() > 21)
+        bust = true;
+}
 
+bool Player::get_bust(){
+    return bust;
+}
