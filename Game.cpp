@@ -1,5 +1,6 @@
 #include "Game.h"
 #include <ctype.h>
+#include <algorithm>
 using namespace std;
 
 std::string& lower(std::string& str){
@@ -68,18 +69,27 @@ void Game::ask_command(){
 }
 
 bool Game::game_over(){
-    int bust = 0;
-    int stay;
+    int b = 0;
+    int s = 0;
     for (int id = 0; id < num_players; id++){
         if (players[id].get_stay() == true)
-            stay++;
+            s++;
         if (players[id].get_bust() == true)
-            bust++;
+            b++;
     }
-    return (stay == 2 || bust > num_players - 2);
+    stay = (s == num_players);
+    bust = (b > num_players - 1);
+    return stay || bust;
 }
 
 void Game::print_winner(){
+    
+    if (stay){
+        std::vector<int> values;
+        for (Player p : players)
+            values.push_back(p.value()); 
+        //which player has greater value
+    }
     std::cout << "Game Over";
 }
 

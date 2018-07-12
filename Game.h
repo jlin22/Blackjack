@@ -17,6 +17,9 @@ private:
     Deck d; 
     int turn = 0;
     int num_players;
+    //either stay or bust becomes true once the game ends
+    bool stay; 
+    bool bust; 
 }; 
 
 /* Issues to contend with:
