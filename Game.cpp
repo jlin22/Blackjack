@@ -33,7 +33,8 @@ int Game::get_turn(){
 }
 
 void Game::next_turn(){
-    turn = (turn + 1) % 2;    
+    while (players[turn].get_bust() || players[turn].get_stay() && !game_over())
+        turn = (turn + 1) % num_players;    
 }
 
 std::string Game::declare_turn(){

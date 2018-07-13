@@ -20,6 +20,7 @@ private:
     //either stay or bust becomes true once the game ends
     bool stay; 
     bool bust; 
+    int active_players;
 }; 
 
 /* Issues to contend with:
