@@ -13,6 +13,10 @@ void Player::add_card(const Card c){
     cards.push_back(c);
 }
 
+bool Player::allow_split(){
+    return (cards.size() == 2 && cards[0].val == cards[1].val);
+}
+
 std::string Player::get_cards(){
     std::string d = "Player ";
     d.append(std::to_string(id));

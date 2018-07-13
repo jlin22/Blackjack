@@ -44,7 +44,6 @@ std::string Game::declare_turn(){
     return t;
 }
 
-//returns if comm == valid
 bool Game::parse_command(std::string comm){
     trim(comm); 
     lower(comm);
@@ -58,15 +57,20 @@ bool Game::parse_command(std::string comm){
         next_turn();
     }
     else
+        //command not valid
         return false;
     return true;
 }
 
 void Game::ask_command(){
-    std::string c = "What is Player ";
-    c.append(std::to_string(turn + 1));
-    c.append("'s decision? \t");
-    std::cout << c;
+    if (players[turn].allow_split())
+        cout << "You're initial hand has two cards of the same value. Would you like to split?";
+    else{
+        std::string c = "What is Player ";
+        c.append(std::to_string(turn + 1));
+        c.append("'s decision? \t");
+        std::cout << c;
+    }
 }
 
 bool Game::game_over(){

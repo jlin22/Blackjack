@@ -4,6 +4,7 @@ class Player{
 public:
     Player(int id);
     std::string get_cards();
+    bool allow_split();
     int get_id(); 
     void add_card(Card c);
     int value();
