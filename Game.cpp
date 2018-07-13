@@ -78,19 +78,27 @@ bool Game::game_over(){
             b++;
     }
     stay = (s == num_players);
-    bust = (b > num_players - 1);
+    bust = (b >= num_players - 1);
     return stay || bust;
 }
 
 void Game::print_winner(){
-    
+    std::cout << "Game Over" << endl;
     if (stay){
-        std::vector<int> values;
-        for (Player p : players)
-            values.push_back(p.value()); 
-        //which player has greater value
+        int max = 0;
+        //whoever has the greater value
+        if (players[1].value() > players[0].value())
+            max = 1;
+        std::cout << "Player " << max+1 << " wins with the highest value of " << players[max].value();
     }
-    std::cout << "Game Over";
+    else if (bust){
+        if (players[0].get_bust() == true){
+            std::cout << "Player " << 2 << " wins";
+        }
+        else{
+            std::cout << "Player " << 1 << " wins";
+        }
+    }
 }
 
 void Game::determine_winner(){
